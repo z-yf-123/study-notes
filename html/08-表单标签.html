@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>
+        在HTML中，一个完整的表单通常由表单域、表单控件(也称为表单元素)和提示信息3个部分构成
+      </h2>
+      <h3>
+        在HTML标签中，form标签用于定义表单域，以实现用户信息的收集和传递。form会把它范围内的
+        表单元素信息提交给服务器.
+      </h3>
+      <ul>
+        <li>action:用于指定接收并处理表单数据的服务器程序的url地址。</li>
+        <li>method:用于设置表单数据的提交方式,其取值为get或post.</li>
+        <li>name:用于指定表单的名称，以区分同一个页面中的多个表单域。</li>
+      </ul>
+    </div>
+    <div>
+      <form action="">
+        <!-- 文本框 value属性可以让刚打开就显示对应的值-->
+        用户名:<input type="text" name="username" value="张三" /><br />
+        <!-- 密码框 -->
+        密码:<input type="password" name="pwd" /><br />
+        <!-- 单选框 必须有相同的名字name 才可以实现多选一 name主要用于区分不同表单 -->
+        <!-- 单选按钮和复选框可以设置checked 属性，当页面打开的时候就可以默认选中这个按钮 -->
+        <!-- label用于增加用户体验 -->
+        性别: <label for="man">男</label
+        ><input type="radio" name="sex" checked="checked" value="男" id="man" />
+        <label for="woman">女</label
+        ><input type="radio" name="sex" value="女" id="woman" /><br />
+        <!-- 多选框 -->
+        爱好:唱<input
+          type="checkbox"
+          name="hobby"
+          checked="checked"
+          value="唱"
+        />跳<input
+          type="checkbox"
+          name="hobby"
+          checked="checked"
+          value="跳"
+        />rap<input type="checkbox" name="hobby" value="rap" />篮球<input
+          type="checkbox"
+          name="hobby"
+          value="篮球"
+        /><br />
+        <!-- 下拉表单 -->
+        <select name="city">
+          <option>武汉</option>
+          <option>北京</option>
+          <option>上海</option>
+          <option selected="selected">杭州</option>
+        </select>
+        <br />
+        <!-- 文本域标签 -->
+        <textarea name="info"></textarea><br />
+        <!-- 普通按钮 button  -->
+        <input type="button" value="获取短信验证码" />
+        <!-- 点击了提交按钮,可以把表单域form 里面的表单元素里面的值提交给后台服务器 -->
+        <input type="submit" value="提交" />
+      </form>
+    </div>
+  </body>
+</html>

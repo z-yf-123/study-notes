@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>点击停止定时器</button>
+    <script>
+      const btn = document.querySelector("button");
+      //setTimeout时间到了只执行一次
+      const timer1 = setTimeout(function () {
+        console.log("两秒到了");
+      }, 2000);
+      //setInterval每隔一段时间就执行
+      const timer2 = setInterval(function () {
+        console.log("每过两秒就执行");
+      }, 2000);
+
+      btn.addEventListener("click", function () {
+        //停止定时器
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.借用父构造函数继承属性
+      function Father(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      Father.prototype.money = function () {
+        console.log("父亲在赚钱");
+      };
+
+      function Son(uname, age, score) {
+        //将父构造函数的this指向改为子类构造函数this指向
+        Father.call(this, uname, age);
+        this.score = score;
+      }
+      //将父类实例赋值给子类构造函数原型对象
+      Son.prototype = new Father();
+      //再让子类构造函数的constructor指回自己
+      Son.prototype.constructor = Son;
+      //这是子类构造函数自己的方法
+      Son.prototype.learn = function () {
+        console.log("儿子在学习");
+      };
+
+      const f = new Father("张某", 44);
+      const s = new Son("张三", 18, 99);
+      console.log(s);
+    </script>
+  </body>
+</html>

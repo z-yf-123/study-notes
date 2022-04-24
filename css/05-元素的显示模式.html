@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: #bfc;
+      }
+      .block h3 {
+        background-color: red;
+      }
+      .inline span {
+        background-color: #fcb;
+      }
+      .transform a {
+        display: block;
+        /* display: inline-block; */
+        width: 200px;
+        height: 200px;
+        background-color: #fac;
+      }
+      .transform a:hover {
+        color: red;
+        background-color: #bac;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block">
+      <h3>常见的块级元素有h1~h6、p、div、ul、ol、li等,特点如下</h3>
+      <ul>
+        <li>独占一行</li>
+        <li>高度，宽度、外边距以及内边距都可以控制</li>
+        <li>宽度默认是容器(父级宽度)的100%</li>
+      </ul>
+    </div>
+    <div class="inline">
+      <h3>
+        常见的行内元素有a、strong、b、em、i、del、s、ins、u、span等,特点如下
+      </h3>
+      <span>一行可以显示多个。</span>
+      <span>高、宽直接设置是无效的。</span>
+      <span>默认宽度就是它本身内容的宽度。</span>
+      <span> 行内元素只能容纳文本或其他行内元素。</span>
+    </div>
+    <div class="inline-block">
+      <h3>
+        常见的行内块元素img、input、td，它们同时具有块元素和行内元素的特点。
+      </h3>
+    </div>
+    <div class="transform">
+      <h3>想增加a链接的触发范围</h3>
+      <a href="#">某个链接</a>
+    </div>
+  </body>
+</html>

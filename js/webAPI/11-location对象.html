@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      //5s后跳转百度案例
+      const div = document.querySelector("div");
+      let timer = 5;
+      setInterval(function () {
+        if (timer == 0) {
+          location.href = "http://www.baidu.com";
+        } else {
+          div.innerHTML = timer + "秒后跳转百度";
+          timer--;
+        }
+      }, 1000);
+
+      //location.search 获取页面参数
+      //location.assign() 跟href一样,可以跳转页面(也称为重定向页面)
+      //location.replace() 替换当前页面,因为不记录历史，所以不能后退页面
+      //location.reload() 重新加载页面,相当于刷新按钮或者f5如果参数为true强制刷新ctrl+f5
+
+      //history对象方法
+      // back() 可以后退功能
+      // forward() 前进功能
+      // go(参数) 前进后退功能参数如果是1前进1个页面如果是-1后退1个页面
+    </script>
+  </body>
+</html>

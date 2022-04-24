@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="firstName" placeholder="请输入姓" />
+      <input type="text" v-model="lastName" placeholder="请输入名" />
+      <p>你的姓名是:{{name}}</p>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          firstName: '',
+          lastName: '',
+        },
+        computed: {
+          name() {
+            //只要依赖的数据源发生变化就会重新求值
+            return this.firstName + this.lastName
+          },
+          // 计算属性的好处是实现了代码复用
+          // methods和computed的区别
+          // 计算属性是有缓存的, 当我们多次使用计算属性时, 计算属性中的运算只会执行一次.
+          // 计算属性会随着依赖的数据(firstName)的改变, 而进行重新计算.
+        },
+      })
+    </script>
+  </body>
+</html>

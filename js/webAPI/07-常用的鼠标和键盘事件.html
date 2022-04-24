@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //1.鼠标事件
+      // onclick 鼠标点击左键触发
+      // onmouseover 鼠标经过触发
+      // onmouseout 鼠标离开触发
+      // onfocus 获得鼠标焦点触发
+      // onblur 失去鼠标焦点触发
+      // onmousemove 鼠标移动触发
+      // onmouseup 鼠标弹起触发
+      // onmousedown 鼠标按下触发
+
+      //2.键盘事件
+      // onkeyup   某个键盘按键被松开时触发
+      // onkeydown   某个键盘按键被按下时触发
+      // onkeypress  某个键盘按键被按下时触发但是它不识别功能键比如ctrl shift箭头等
+
+      document.addEventListener("click", function (e) {
+        //1.client 鼠标在可视区的x和y坐标
+        console.log("鼠标在可视区的坐标(" + e.clientX + "," + e.clientY + ")");
+        //2.page 鼠标在页面文档的x和y坐标
+        console.log("鼠标在页面文档的坐标(" + e.pageX + "," + e.pageY + ")");
+      });
+
+      document.addEventListener("keyup", function (e) {
+        //keyCode属性可以得到相应键的ASCII码值
+        console.log(e.keyCode);
+        if (e.keyCode === 65) {
+          alert("按下了a键");
+        }
+      });
+    </script>
+  </body>
+</html>

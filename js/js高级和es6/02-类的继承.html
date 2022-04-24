@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Father {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+        }
+        sum() {
+          console.log(this.x + this.y);
+        }
+      }
+
+      class Son extends Father {
+        constructor(x, y) {
+          super(x, y); //调用了父类的构造函数
+        }
+      }
+
+      const s = new Son(3, 4);
+      s.sum();
+
+      //子类继承父类加法的同时扩展自己的减法方法
+      class Son2 extends Father {
+        constructor(x, y) {
+          //注意super要写到最前面
+          super(x, y);
+          this.x = x;
+          this.y = y;
+        }
+        substract() {
+          console.log(this.x - this.y);
+        }
+      }
+      const s2 = new Son2(6, 2);
+      s2.sum();
+      s2.substract();
+    </script>
+  </body>
+</html>

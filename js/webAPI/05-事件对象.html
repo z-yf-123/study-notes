@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <ul>
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+    </ul>
+    <a href="http://www.baidu.com">百度一下</a>
+    <script>
+      const box = document.querySelector(".box");
+      const ul = document.querySelector("ul");
+      const a = document.querySelector("a");
+
+      box.addEventListener("click", (e) => {
+        console.log(e);
+      });
+
+      //事件委托的核心原理:给父节点添加侦听器，利用事件冒泡影响每一个子节点
+      ul.addEventListener("click", function (e) {
+        //e.target是触发事件的对象
+        console.log(e.target);
+        //this是绑定事件的对象,给ul绑定的事件,this就是ul
+        console.log(this);
+      });
+
+      //阻止事件默认行为，让链接不跳转
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>

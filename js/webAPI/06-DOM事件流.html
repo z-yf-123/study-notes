@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .father {
+        display: flex;
+        width: 200px;
+        height: 200px;
+        background-color: #bfc;
+        justify-content: center;
+        align-items: center;
+      }
+      .son {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="son"></div>
+    </div>
+    <script>
+      //DOM事件流:事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程即DOM事件流。
+      //事件冒泡:事件开始时由最具体的元素接收，然后逐级向上传播到到DOM最顶层节点的过程。
+      //事件捕获:由DOM最顶层节点开始，然后逐级向下传播到到最具体的元素接收的过程。
+      //JS只能执行捕获或冒泡的其中一个阶段
+      const father = document.querySelector(".father");
+      const son = document.querySelector(".son");
+      //1.第三个参数设置成true就是捕获阶段
+      //   son.addEventListener(
+      //     "click",
+      //     () => {
+      //       alert("我是儿子");
+      //     },
+      //     true
+      //   );
+      //   father.addEventListener(
+      //     "click",
+      //     () => {
+      //       alert("我是爸爸");
+      //     },
+      //     true
+      //   );
+      //2.第三个参数设置成false就是冒泡阶段(冒泡是重点)
+      son.addEventListener(
+        "click",
+        (e) => {
+          alert("我是儿子");
+          //取消事件冒泡
+          //   e.stopPropagation();
+        },
+        false
+      );
+      father.addEventListener(
+        "click",
+        () => {
+          alert("我是爸爸");
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

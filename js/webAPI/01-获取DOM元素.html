@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box1">第一个盒子</div>
+    <div class="box2">第二个盒子</div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <script>
+      //1.通过id获取元素
+      const box1 = document.getElementById("box1");
+
+      //2.通过标签获取元素
+      const lis = document.getElementsByTagName("li");
+
+      //HTML5新增获取方法
+      //返回指定选择器的第一个元素对象
+      const box2 = document.querySelector(".box2");
+      const li = document.querySelector("li");
+      //获取指定选择器所有元素对象集合
+      const lis2 = document.querySelectorAll("li");
+    </script>
+  </body>
+</html>

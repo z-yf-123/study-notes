@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 200px;
+        background-color: #bfc;
+        /* 以下样式会继承 */
+        color: red;
+        font: 20px/1.5 Microsoft YaHei;
+        text-align: center;
+      }
+
+      div ul li {
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>这个段落没有给样式，但是继承了div的样式</p>
+      <ul>
+        <li>行高不跟单位则是文字大小的倍数</li>
+        <li>如果子元素没有设置行高则会继承父元素的行高为1.5</li>
+        <li>此时子元素行高为当前子元素文字大小*1.5</li>
+        <li>这样写的优势是里面元素可以根据文字大小自动调整行高</li>
+      </ul>
+      <h4>选择器优先级</h4>
+      <ul>
+        <li>继承或*权重为0</li>
+        <li>标签选择器权重为1</li>
+        <li>类和伪类为10</li>
+        <li>id选择器为100</li>
+        <li>行内为1000</li>
+        <li>!important为无穷大</li>
+      </ul>
+    </div>
+  </body>
+</html>

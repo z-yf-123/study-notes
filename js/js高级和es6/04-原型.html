@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(uname, age) {
+        this.uname = uname;
+        this.age = age;
+        // this.say = function () {
+        //   console.log("我会说话");
+        // };
+      }
+
+      const p1 = new Person("张三", 18);
+      const p2 = new Person("李四", 20);
+      // 因为每创建一个实例对象都会给该对象开辟一个
+      // 内存空间来存放构造函数的方法所以比较浪费内存
+      console.log(p1.say === p2.say); //false
+
+      Person.prototype.say = function () {
+        console.log("我会说话");
+      };
+      //每一个构造函数都有一个prototype属性,指向另一个对象.可以把那些不变的
+      //方法,直接定义在prototype对象上,这样所有对象的实例就可以共享这些方法
+      p1.say();
+      //之所以实例对象能访问say方法是因为每个实例对象都有__proto__指向构造函数的prototype
+      console.log(p1);
+      console.log(p1.__proto__ === Person.prototype);
+      console.log(p1.say === p2.say);
+
+      //__proto__和prototype中都有一个constructor用来指向构造函数本身
+
+      //因为prototype也是一个对象，所以它也有__proto__,指向的是Object.prototype
+      console.log(Person.prototype.__proto__ === Object.prototype);
+      //原型链的终点
+      console.log(Object.prototype.__proto__); //null
+    </script>
+  </body>
+</html>

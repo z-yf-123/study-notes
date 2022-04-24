@@ -1,0 +1,7 @@
+Path Autocomplete(自动提示路径)
+    "path-autocomplete.extensionOnImport": true,
+    "path-autocomplete.pathMappings": {
+      "@": "${folder}/src"
+    }
+    注:根目录下不要有其他文件夹,否则失效,建议做哪个项目就直接打开哪个项目
+Auto Close Tag(自动闭合标签)

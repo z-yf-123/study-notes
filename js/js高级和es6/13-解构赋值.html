@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 数组解构
+      let [a, b, c] = [11, 22, 33];
+      console.log(a); //11
+      console.log(b); //22
+      console.log(c); //33
+      let [d, e] = [44];
+      console.log(d); //44
+      console.log(e); //undefined
+
+      // 对象解构
+      const obj = {
+        name: "张三",
+        age: 20,
+      };
+
+      const { name, age } = obj;
+      console.log(name); //张三
+      console.log(age); //20
+
+      const { name: myName, age: myAge } = obj;
+      console.log(myName); //张三
+      console.log(myAge); //20
+    </script>
+  </body>
+</html>

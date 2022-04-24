@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 在页面声明一个将要被vue控制的DOM区域(view视图区域) -->
+    <div id="app">
+      <p>message的值是:{{message | capi}}</p>
+    </div>
+    <div id="app1">
+      <p>name的值是:{{name | capi}}</p>
+      <p>当前时间:{{+new Date() | dateFormat}}</p>
+    </div>
+
+    <!-- 引入vue的相关库，全局就有了Vue构造函数 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <!-- 引入对时间进行格式化处理的库 -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+    <!-- 创建vm实例对象,该对象就是ViewModel -->
+    <script>
+      // 使用Vue.filter创建全局的过滤器
+      Vue.filter("capi", (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1) + "~~";
+      });
+
+      Vue.filter("dateFormat", (time) => {
+        return dayjs(time).format("DD/MM/YYYY");
+      });
+
+      const vm = new Vue({
+        //el属性是固定写法,后面的值是一个选择器,表示要控制页面哪个区域
+        el: "#app",
+        // data对象就是Model
+        data: {
+          message: "hello",
+        },
+        // 过滤器函数，必须被定义到filters节点之下
+        filters: {
+          // 过滤器函数的形参中的val,永远是“管道符”前面的值
+          capi(val) {
+            // 过滤器一定要有返回值
+            const first = val.charAt(0).toUpperCase();
+            const other = val.slice(1);
+            return first + other;
+          },
+        },
+      });
+
+      const vm1 = new Vue({
+        el: "#app1",
+        data: {
+          name: "zhangsan",
+        },
+      });
+    </script>
+  </body>
+</html>

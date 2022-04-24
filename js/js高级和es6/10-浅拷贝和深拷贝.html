@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //浅拷贝只拷贝一层,更深层次对象只拷贝引用
+      const obj = {
+        id: 1,
+        name: "张三",
+        info: {
+          sex: "男",
+        },
+        friends: ["张三", "李四"],
+      };
+
+      const obj2 = {};
+      //   for (let k in obj) {
+      //     obj2[k] = obj[k];
+      //   }
+
+      //es6新增浅拷贝方法
+      //   Object.assign(obj2, obj);
+      //   console.log(obj2);
+      //   obj2.info.sex = "女";
+      //   console.log(obj);
+
+      //浅拷贝拷贝多层
+
+      //封装函数
+      const obj3 = {};
+      function deepCopy(newObj, oldObj) {
+        for (let k in oldObj) {
+          let item = oldObj[k];
+          if (item instanceof Array) {
+            newObj[k] = [];
+            deepCopy(newObj[k], item);
+          } else if (item instanceof Object) {
+            newObj[k] = {};
+            deepCopy(newObj[k], item);
+          } else {
+            newObj[k] = item;
+          }
+        }
+      }
+
+      deepCopy(obj3, obj);
+      console.log(obj3);
+      obj3.info.sex = "女";
+      console.log(obj);
+    </script>
+  </body>
+</html>

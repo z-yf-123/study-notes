@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        float: left;
+        /*
+        浮动元素的特性：
+        1.浮动元素会脱离标准流(脱标)
+        2.浮动的元素不再保留原来的位置
+        3.浮动的元素会具有行内块元素的特性
+        */
+        width: 200px;
+        height: 200px;
+        background-color: #bfc;
+      }
+      .box2 {
+        width: 400px;
+        height: 400px;
+        background-color: red;
+      }
+      /*
+        多个盒子都设置了浮动，则会按照属性值一行内显示并且顶端对齐排列
+        浮动的元素贴靠在一起不会有缝隙，如果父级宽度装不下这些盒子，则
+        会另起一行对齐。
+        网页布局一般采取的策略是:先用标准流的父元素排列上下位置,之后
+        内部子元素采取浮动排列左右位置
+      */
+      .box3 {
+        height: 200px;
+        border: 1px solid #aaf;
+      }
+      .box3 div {
+        float: left;
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+      }
+      /*
+        为什么要清除浮动?
+        有些时候父元素不方便给高度，而子元素浮动又不占有位置
+        导致父元素的高度为0,就会影响下面标准流的盒子
+      */
+      .box4 {
+        /* 方法1：给父元素添加overflow:hidden */
+        /* overflow:hidden */
+        border: 1px solid red;
+      }
+      /* 方法2:after伪元素 */
+      .clearfix:after {
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      .clearfix {
+        *zoom: 1;
+      }
+
+      .box4 div {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      }
+      .box5 {
+        height: 200px;
+        background-color: #ccf;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">浮动的盒子</div>
+    <div class="box2">标准流的盒子</div>
+    <div class="box3">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="box4 clearfix">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="box5"></div>
+  </body>
+</html>

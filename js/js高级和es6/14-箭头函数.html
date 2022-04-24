@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const fn = function (a, b) {
+      //     return a + b;
+      //   };
+      const foo = (a, b) => a + b;
+      console.log(foo(3, 5));
+
+      //箭头函数没有自己的this,如果在箭头函数中使用this,this将指向箭头函数定义位置的上下文this
+      const obj = { name: "张三" };
+      function fn() {
+        console.log(this);
+
+        return () => {
+          console.log(this);
+        };
+      }
+      const resFn = fn.call(obj);
+      resFn();
+
+      //相关例题
+      var name = "全局对象window";
+      const obj1 = {
+        name: "李四",
+        say: () => {
+          console.log(this.name);
+        },
+      };
+      obj1.say();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 在页面声明一个将要被vue控制的DOM区域(view视图区域) -->
+    <div id="app">
+      <div>
+        <h3>内容渲染指令</h3>
+        <span>{{username}}</span>
+        <span v-html="info"></span>
+        <span>{{flag ? '男':'女'}}(支持js语法)</span>
+      </div>
+      <div>
+        <h3>属性绑定指令</h3>
+        <input type="text" :placeholder="inputInfo" />
+        <input type="text" :placeholder="inputInfo+'拼接的字符串'" />
+        <img :src="photo" alt="" />
+      </div>
+      <div>
+        <h3>事件绑定绑定指令</h3>
+        <span>当前值是{{count}}</span>
+        <button @click="add">点击+1</button>
+        <button @click="addN(5)">点击加5(传参)</button>
+        <!-- vue提供了内置变量,名字叫$event,就是原生DOM事件对象 -->
+        <button @click="sub(3,$event)">点击减3,偶数则按钮变红($event)</button>
+        <a href="#" @click.prevent="show">百度一下(事件修饰符)</a>
+        <!-- 只有点击了esc键才调用 -->
+        <input type="text" placeholder="按键修饰符" @keyup.esc="clearInput" />
+      </div>
+      <div>
+        <h3>双向绑定指令</h3>
+        <p>输入框内容:{{inputValue}},下拉框内容:{{selectValue}}</p>
+        <input type="text" v-model="inputValue" />
+        <select v-model="selectValue">
+          <option>北京</option>
+          <option>上海</option>
+          <option>广州</option>
+        </select>
+        <!-- number会将输入的值转化为数字型 -->
+        <input type="text" v-model.number="modelNum" />
+        <!-- trim会去掉首位两边的空白字符 -->
+        <input type="text" v-model.trim="modelTrim" />
+        <!-- lazy是只有在输入框失去焦点才同步 -->
+        <input type="text" v-model.lazy="modelLazy" />
+      </div>
+      <div>
+        <h3>条件渲染指令</h3>
+        <!-- v-if的原理是每次都要动态创建或移除元素 -->
+        <span v-if="type==='A'">优秀</span>
+        <span v-else-if="type==='B'">良好</span>
+        <span v-else="type==='C'">差</span>
+        <!-- v-show的原理是给元素添加或移除display:none属性 -->
+        <span v-show="type==='C'">该学生很差</span>
+      </div>
+      <div>
+        <h3>列表渲染指令</h3>
+        <ul>
+          <li v-for="(item,index) in infoList" :key="item.id">
+            索引是:{{index}},id是:{{item.id}},名字是:{{item.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 引入vue的相关库，全局就有了Vue构造函数 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <!-- 创建vm实例对象,该对象就是ViewModel -->
+    <script>
+      const vm = new Vue({
+        //el属性是固定写法,后面的值是一个选择器,表示要控制页面哪个区域
+        el: "#app",
+        // data对象就是Model
+        data: {
+          username: "张三",
+          info: '<span style="color: red">嗨喽，我是张三</span>',
+          flag: true,
+          inputInfo: "我是输入框内容",
+          photo: "./image.png",
+          count: 0,
+          inputValue: "",
+          selectValue: "",
+          modelNum: 0,
+          modelTrim: "",
+          modelLazy: "",
+          type: "B",
+          infoList: [
+            { id: "001", name: "张三" },
+            { id: "002", name: "李四" },
+            { id: "003", name: "王五" },
+          ],
+        },
+        methods: {
+          add() {
+            //this即为vue实例
+            this.count += 1;
+          },
+          addN(n) {
+            this.count += n;
+          },
+          sub(n, e) {
+            this.count -= n;
+            console.log(e);
+            if (this.count % 2 === 0) {
+              e.target.style.backgroundColor = "red";
+            } else {
+              e.target.style.backgroundColor = "";
+            }
+          },
+          show() {
+            console.log("点击了a链接");
+          },
+          clearInput(e) {
+            e.target.value = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

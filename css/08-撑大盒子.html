@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 100px;
+        background-color: #bfc;
+        /* border使盒子宽度增加了10px */
+        border: 5px solid red;
+        /* padding使盒子宽度增加了10px */
+        padding: 10px;
+        /* 盒子实际大小为130px */
+        /* 另外盒子本身没有指定宽度或高度，此时padding不会撑大盒子 */
+      }
+
+      div p {
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>这个盒子和父元素一样宽,此时padding不会撑大盒子</p>
+    </div>
+  </body>
+</html>

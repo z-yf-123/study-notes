@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="username" />
+      <input type="text" v-model="info.msg" />
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          username: "",
+          info: {
+            msg: "",
+          },
+        },
+        watch: {
+          // 要监听那个数据,就把该数据名作为方法名
+          // 新值在前,旧值在后
+          username(newVal, oldVal) {
+            console.log(
+              "username数据发生变化了,新值为" + newVal + ",旧值为" + oldVal
+            );
+          },
+          // 定义对象格式的侦听器
+          info: {
+            handler(newVal) {
+              console.log(newVal);
+            },
+            // immediate设置为true则开始会执行一次
+            immediate: true,
+            // deep为true实现深度监听
+            deep: true,
+          },
+          // 如果只想单独监听某个子属性
+          //   'info.msg': {
+          //     handler(newVal) {
+          //       console.log(newVal);
+          //     },
+          //   },
+        },
+      });
+    </script>
+  </body>
+</html>

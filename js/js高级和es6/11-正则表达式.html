@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.通过调用RegExp来创建正则表达式
+      //   const regexp = new RegExp(/123/);
+
+      //2.利用字面量创建正则表达式
+      const regexp = /123/;
+      console.log(regexp.test(123)); //true
+      console.log(regexp.test("123")); //true
+      console.log(regexp.test("abc")); //false
+
+      console.log("边界符^ $ -----------------");
+      const rg = /abc/; //只要包含abc这个字符串都返回true
+      console.log(rg.test("abc")); //true
+      console.log(rg.test("aabcc")); //true
+      const rg2 = /^abc/;
+      console.log(rg2.test("abcc")); //true
+      console.log(rg2.test("aabcc")); //false
+      const rg3 = /^abc$/; //精确匹配,必须是abc字符串
+
+      console.log("字符类 [] ------------------");
+      const rg4 = /[abc]/; //只要包含a,b,c其中一个字母就是true
+      const rg5 = /^[abc]$/; //只有是a,b,c其中一个才是true
+      console.log(rg5.test("aa")); //false
+      const rg6 = /^[a-z]$/; //是26个英文字母中任意一个小写字母就是true
+      const rg7 = /^[a-zA-Z0-9]$/; //是26个英文字母中任意一个字母或者任意一个数字就是true
+      const rg8 = /^[^abc]$/; //^放在中括号里表示取反,不是abc中的任意一个就返回true
+      console.log(rg8.test("a")); //false
+      console.log(rg8.test("aa")); //false
+      console.log(rg8.test("d")); //true
+
+      console.log("量词符 * + ? {n,m} --------------");
+      const rg9 = /^a*$/; // * 代表可以出现0次以上
+      console.log(rg9.test("")); //true
+      console.log(rg9.test("a")); //true
+      console.log(rg9.test("aaa")); //true
+      const rg10 = /^a+$/; // + 代表可以出现一次以上
+      console.log(rg10.test("")); //false
+      console.log(rg10.test("a")); //true
+      console.log(rg10.test("aaa")); //true
+      const rg11 = /^a?$/; // ? 代表可以出现零次或一次
+      console.log(rg11.test("")); //true
+      console.log(rg11.test("a")); //true
+      console.log(rg11.test("aaa")); //false
+      const rg12 = /^a{3}$/; //代表a只能出现三次
+      console.log(rg12.test("a")); //false
+      console.log(rg12.test("aaa")); //true
+      console.log(rg12.test("aaaaa")); //false
+      const rg13 = /^a{3,}$/; //代表a只能出现大于等于三次
+      const rg14 = /^a{3,10}$/; //代表a只能出现大于等于三次小于等于十次
+      const rg15 = /^[a-zA-Z0-9]{3,5}$/; //规定该模式出现的次数
+      console.log(rg15.test("ab")); //false
+      console.log(rg15.test("12df")); //true
+
+      //正则替换
+      const str = "nitamaabcbabstama";
+      const newStr = str.replace(/tama/g, "*"); //g代表全局匹配 i代表忽略大小写
+      console.log(newStr); //"ni*abcbabs*"
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      <!-- 绑定class -->
+      <div :class="{'active': isActive}">绑定class的对象语法</div>
+      <div :class="['abc', title, {active: isActive}]">绑定class的数组语法</div>
+      <button @click="toggle">切换</button>
+      <hr />
+      <!-- 绑定style -->
+      <div :style="{color: finalColor, 'font-size': '30px'}">
+        绑定style的对象语法
+      </div>
+      <div :style="{color: finalColor, fontSize: '30px'}">
+        绑定style的对象语法
+      </div>
+      <hr />
+      <!-- 直接绑定对象 -->
+      <div v-bind="info">直接绑定对象</div>
+    </template>
+
+    <script src="./vue.js"></script>
+
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            className: 'why',
+            title: 'cba',
+            isActive: true,
+            finalColor: 'red',
+            info: {
+              name: 'why',
+              age: 18,
+              height: 1.88,
+            },
+          }
+        },
+        methods: {
+          toggle() {
+            this.isActive = !this.isActive
+          },
+        },
+      }
+
+      Vue.createApp(App).mount('#app')
+    </script>
+  </body>
+</html>

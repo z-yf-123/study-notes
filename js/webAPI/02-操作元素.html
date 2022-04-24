@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: red;
+      }
+      .box2 {
+        width: 200px;
+        height: 200px;
+      }
+      .box2-change {
+        width: 400px;
+        height: 400px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn1">点击修改内容</button>
+    <div class="box1">某个链接</div>
+    <hr />
+    <button class="btn2">点击修改元素属性</button>
+    <img src="./image.png" alt="" />
+    <hr />
+    <button class="btn3">点击修改表单属性</button>
+    <input type="text" value="请输入内容" />
+    <hr />
+    <button class="btn4">点击修改行内样式</button>
+    <button class="btn5">点击修改类名</button>
+    <div class="box2"></div>
+    <script>
+      const btn1 = document.querySelector(".btn1");
+      const box1 = document.querySelector(".box1");
+      const btn2 = document.querySelector(".btn2");
+      const img = document.querySelector("img");
+      const btn3 = document.querySelector(".btn3");
+      const ipt = document.querySelector("input");
+      const btn4 = document.querySelector(".btn4");
+      const box2 = document.querySelector(".box2");
+      const btn5 = document.querySelector(".btn5");
+      //修改元素内容
+      btn1.onclick = function () {
+        box1.innerHTML = '<a href="http://www.baidu.com">百度一下</a>';
+        this.disabled = true; //this为事件源对象
+      };
+      //修改元素属性
+      btn2.onclick = function () {
+        img.src = "./image2.jpeg";
+        this.disabled = true; //this为事件源对象
+      };
+      //修改表单属性
+      btn3.onclick = function () {
+        ipt.value = "张三";
+        this.disabled = true; //this为事件源对象
+      };
+      //修改样式属性
+      btn4.onclick = function () {
+        box2.style.backgroundColor = "blue";
+        box2.style.width = "300px";
+        this.disabled = true; //this为事件源对象
+      };
+      //修改类名
+      btn5.onclick = function () {
+        box2.className = "box2-change";
+        this.disabled = true; //this为事件源对象
+      };
+    </script>
+  </body>
+</html>

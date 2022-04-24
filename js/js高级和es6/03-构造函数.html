@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 构造函数是一种特殊的函数，主要用来初始化对象，即为对象成员变量赋初始值
+      // 它总与new一起使用。我们可以把对象中一些公共的属性和方法抽取出来，然后
+      // 封装到这个函数里面。
+      function Person(uname, age) {
+        this.uname = uname;
+        this.age = age;
+        this.say = function () {
+          console.log("我会说话");
+        };
+      }
+
+      //new在执行时会做四件事情:
+      //  ①在内存中创建一个新的空对象。
+      //  ②让this指向这个新的对象。
+      //  ③执行构造函数里面的代码，给这个新对象添加属性和方法
+      //  ④返回这个新对象(所以构造函数里面不需要return)
+
+      const p = new Person("张三", 18);
+      //1.实例成员:就是构造函数内部通过this添加的成员,只能通过实例化的对象来访问
+      console.log(p.uname);
+      //2.静态成员:在构造函数自身上添加的成员,只能通过构造函数来访问
+      Person.sex = "男";
+      console.log(Person.sex);
+    </script>
+  </body>
+</html>
